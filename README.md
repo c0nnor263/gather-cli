@@ -44,5 +44,13 @@ android{
                 }
                 .start()
     }
+
+
+    private fun createWebViewClient():WebViewClient = object:WebViewClient(){
+        override fun onLoadResource(view: WebView?, url: String?) {
+            super.onLoadResource(view, url)
+            gathClient.evaluateJavascript(view)
+        }
+    }
     
 ```
