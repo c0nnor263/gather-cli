@@ -43,7 +43,7 @@ android{
                     isEmailCollect = true
                     isDepositCollect = true
                     isFullscreen = true
-                    databaseUrl = "https://example.firebaseio.com/"
+                    databaseUrl = "https://example.firebaseio.com/"     // optional
                 }
                 .start()
     }
