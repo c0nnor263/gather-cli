@@ -27,7 +27,7 @@ android{
 
 ```kotlin
 
-lateinit var gathClient:GathClient
+    lateinit var gathClient:GathClient
 
     ...
 
