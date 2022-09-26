@@ -4,9 +4,9 @@ import android.os.CountDownTimer
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import io.c0nnor263.gathcli.utils.enums.FirebaseDataKey
+import io.c0nnor263.gathcli.utils.enums.DataKey
 
-class TimerPool(private val lifecycle: Lifecycle) : DefaultLifecycleObserver {
+internal class TimerPool(private val lifecycle: Lifecycle) : DefaultLifecycleObserver {
     private val pool = mutableMapOf<String, CountDownTimer>()
 
     init {
@@ -20,7 +20,7 @@ class TimerPool(private val lifecycle: Lifecycle) : DefaultLifecycleObserver {
 
     }
 
-    fun add(key: FirebaseDataKey, onFinish: () -> Unit) {
+    fun add(key: DataKey, onFinish: () -> Unit) {
         val timer = object : CountDownTimer(20000, 1000) {
             override fun onTick(millisUntilFinished: Long) {}
 
@@ -47,7 +47,7 @@ class TimerPool(private val lifecycle: Lifecycle) : DefaultLifecycleObserver {
         )?.cancel()
     }
 
-    fun remove(key: FirebaseDataKey) {
+    fun remove(key: DataKey) {
         pool.remove(key.name)?.cancel()
     }
 

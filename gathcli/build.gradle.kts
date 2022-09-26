@@ -1,15 +1,15 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
-
 apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
 
 group = property("PUBLISH_GROUP_ID")!!
 version = property("PUBLISH_VERSION")!!
 
+val key1: String = gradleLocalProperties(rootDir).getProperty("OBFUSTRING_KEY1")
 
 android {
     namespace = "io.c0nnor263.gathcli"
@@ -21,10 +21,17 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+
+
     }
 
     buildTypes {
+        debug{
+            buildConfigField ("String", "fob1", key1)
+        }
         release {
+
+            buildConfigField ("String", "fob1", key1)
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -51,13 +58,10 @@ dependencies {
 
     // Lifecycle + ViewModel & LiveData
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-
-    // Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     // DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
@@ -75,4 +79,7 @@ dependencies {
 
     // Dexter
     implementation("com.karumi:dexter:6.2.3")
+
+    // Obfustring
+    implementation ("io.github.c0nnor263:obfustring-core:1.5.7")
 }
