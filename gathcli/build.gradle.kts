@@ -12,7 +12,7 @@ version = property("PUBLISH_VERSION")!!
 val key1: String = gradleLocalProperties(rootDir).getProperty("OBFUSTRING_KEY1")
 
 android {
-    namespace = "io.c0nnor263.gathcli"
+    namespace = "io.d485437e6782f66.a135d8c81ffe2908c8f96413c963a0ededfe"
     compileSdk = 33
 
     defaultConfig {
@@ -71,7 +71,7 @@ dependencies {
 
 
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:30.3.2"))
+    implementation(platform("com.google.firebase:firebase-bom:30.5.0"))
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-installations:17.0.3")
@@ -81,5 +81,5 @@ dependencies {
     implementation("com.karumi:dexter:6.2.3")
 
     // Obfustring
-    implementation ("io.github.c0nnor263:obfustring-core:1.5.7")
+    implementation ("io.github.c0nnor263:obfustring-core:10.05")
 }
