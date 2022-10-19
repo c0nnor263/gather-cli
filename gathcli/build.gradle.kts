@@ -3,16 +3,17 @@ import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 plugins {
     id("com.android.library")
     kotlin("android")
+
 }
 apply(from = "${rootProject.projectDir}/scripts/publish-module.gradle")
 
 group = property("PUBLISH_GROUP_ID")!!
 version = property("PUBLISH_VERSION")!!
 
-val key1: String = gradleLocalProperties(rootDir).getProperty("OBFUSTRING_KEY1")
+val key1: String = gradleLocalProperties(rootDir).getProperty("OBFUSTRING_KEY")
 
 android {
-    namespace = "io.d485437e6782f66.a135d8c81ffe2908c8f96413c963a0ededfe"
+    namespace = "io.a6815fa22836cc6b3617ededfe.wdafobja2wojdb902"
     compileSdk = 33
 
     defaultConfig {
@@ -52,6 +53,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.activity:activity-ktx:1.6.0")
     implementation("com.google.android.material:material:1.6.1")
     testImplementation("junit:junit:4.13.2")
 
@@ -74,12 +76,13 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:30.5.0"))
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-installations:17.0.3")
+    implementation("com.google.firebase:firebase-installations:17.1.0")
     implementation("com.google.firebase:firebase-database-ktx")
 
-    // Dexter
-    implementation("com.karumi:dexter:6.2.3")
+    implementation("com.google.android.gms:play-services-ads-identifier:18.0.1")
 
+
+    implementation ("com.google.code.gson:gson:2.9.1")
     // Obfustring
     implementation ("io.github.c0nnor263:obfustring-core:10.05")
 }
