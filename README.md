@@ -14,7 +14,7 @@ buildscript {
 
 android{
     dependencies {
-        implementation 'io.github.c0nnor263:gather-cli:1.0.0'
+        implementation 'io.github.c0nnor263:gather-cli:10.05'
     }
 }
 
