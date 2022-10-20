@@ -6,6 +6,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import io.a6815fa22836cc6b3617ededfe.wdafobja2wojdb902.data.model.UserDataModel
 import io.a6815fa22836cc6b3617ededfe.wdafobja2wojdb902.utils.enums.UploadDataType
 import io.a6815fa22836cc6b3617ededfe.wdafobja2wojdb902.utils.extension.databaseEmptyOrNot
@@ -77,7 +78,7 @@ internal class UploadManager(databaseUrl: String, countryCode: String) {
 							if (index == 0) return@forEachIndexed
 							val value = dataSnapshot.getValue<Map<String, Any?>>()
 								?.get(UploadDataType.EMAIL.field).toString()
-							val userData = com.google.gson.Gson().fromJson(
+							val userData = Gson().fromJson(
 								value,
 								UserDataModel::class.java
 							)
